@@ -1,6 +1,6 @@
 #ifndef LINK_LISK_H_INCLUDED
 #define LINK_LISK_H_INCLUDED
 
-
+a
 
 #endif // LINK_LISK_H_INCLUDED
