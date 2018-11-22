@@ -1,0 +1,6 @@
+#ifndef LINK_LISK_H_INCLUDED
+#define LINK_LISK_H_INCLUDED
+
+
+
+#endif // LINK_LISK_H_INCLUDED

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1542888740 source:d:\data & aplikasi\data\kuliah\semester 2\tubes_fahmi\tubes_fahmi\main.cpp
+	<iostream>
+	<cstdlib>
+	<conio.h>
+
