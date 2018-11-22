@@ -2,50 +2,68 @@
 #include <iostream>
 #include <conio.h>
 #include "link_lisk.h"
-#include "link_list_relasi.h"
 
 
-void CreatePegawai(list_pegawai &Lpegawai){
-    first(Lpegawai) = NULL;
-    last(Lpegawai) = NULL;
+void CreateBeasiswa(list_beasiswa &Lbeasiswa){
+    first(Lbeasiswa) = NULL;
+    last(Lbeasiswa) = NULL;
 };
 
-void CreateDepartemen(list_departemen &Ldepartement){
-    first(Ldepartement) = NULL;
-    last(Ldepartement) = NULL;
+void CreateMahasiswa(list_mahasiswa &Lmahasiswa){
+    first(Lmahasiswa) = NULL;
+    last(Lmahasiswa) = NULL;
 };
 
-void Lpegawai(list_departemen &Ldepartemen){
-    first(Ldepartemen) = NULL;
-    last(Ldepartemen) = NULL;
+address_beasiswa alokasiBeasiswa(infotype_beasiswa X){
+    address_beasiswa P = new elmlist_beasiswa;
+    info(P).jenis = X.jenis;
+    info(P).tahun = X.tahun;
+    next(P) = NULL;
+    prev(P) = NULL;
+    return P;
 };
-address_pegawai alokasiPegawai(infotype_pegawai X){
-    address_pegawai P = new elmlist_pegawai;
+address_mahasiswa alokasiMahasiswa(infotype_mahasiswa X){
+    address_mahasiswa P = new elmlist_mahasiswa;
     info(P).nama = X.nama;
-    info(P).nip = X.nip;
+    info(P).nim = X.nim;
     next(P) = NULL;
     prev(P) = NULL;
     return P;
 };
-address_departemen alokasiDepartemen(infotype_departemen X){
-    address_departemen P = new elmlist_departemen;
-    info(P).nama_departemen = X.nama_departemen;
-    info(P).alamat = X.alamat;
-    next(P) = NULL;
-    prev(P) = NULL;
-    return P;
-};
-void dealokasiPegawai(address_pegawai P){
+
+void dealokasiBeasiswa(address_beasiswa P){
     delete P;
 };
 
-void dealokasiDepartemen(address_departemen P){
+void dealokasiMahasiswa(address_mahasiswa P){
     delete P;
 };
 
-address_pegawai findPegawai(list_pegawai Lpegawai, infotype_pegawai X){
-    address_pegawai P = first(Lpegawai);
-    if (first(Lpegawai) == NULL){
+
+
+address_beasiswa findBeasiswa(list_beasiswa Lbeasiswa, infotype_beasiswa X){
+    address_beasiswa P = first(Lbeasiswa);
+    if (first(Lbeasiswa) == NULL){
+        P = NULL;
+        return P;
+    }
+    else {
+        while (info(P).jenis != X.jenis and next(P) != NULL){
+            P = next(P);
+        }
+        if (info(P).jenis == X.jenis){
+            return P;
+        }
+        else {
+            P = NULL;
+            return P;
+        }
+    }
+};
+
+address_mahasiswa findMahasiswa(list_mahasiswa Lmahasiswa, infotype_mahasiswa X){
+    address_mahasiswa P = first(Lmahasiswa);
+    if (first(Lmahasiswa) == NULL){
         cout<<"Error Data Tidak Ditemukan"<<endl;
         P = NULL;
         return P;
@@ -64,145 +82,142 @@ address_pegawai findPegawai(list_pegawai Lpegawai, infotype_pegawai X){
     }
 };
 
-address_departemen findDepartemen (list_departemen Ldepartemen, infotype_departemen X){
-    address_departemen P = first(Ldepartemen);
-    if (first(Ldepartemen) == NULL){
-        cout<<"Error Data Tidak Ditemukan"<<endl;
-        P = NULL;
-        return P;
+void insertBeasiswa(list_beasiswa &Lbeasiswa, address_beasiswa P){
+    if(first(Lbeasiswa) == NULL){
+        first(Lbeasiswa) = P;
+        last(Lbeasiswa) = P;
     }
     else {
-        while (info(P).nama_departemen != X.nama_departemen and next(P) != NULL){
-            P = next(P);
-        }
-        if (info(P).nama_departemen == X.nama_departemen){
-            return P;
-        }
-        else {
-            P = NULL;
-            return P;
-        }
+        next(P) = first(Lbeasiswa);
+        prev(first(Lbeasiswa)) = P;
+        first(Lbeasiswa) = P;
     }
 };
 
-void insertPegawai(list_pegawai &Lpegawai, address_pegawai P){
-    if(first(Lpegawai) == NULL){
-        first(Lpegawai) = P;
-        last(Lpegawai) = P;
+void insertMahasiswa(list_mahasiswa &Lmahasiswa, address_mahasiswa P){
+    if(first(Lmahasiswa) == NULL){
+        first(Lmahasiswa) = P;
+        last(Lmahasiswa) = P;
     }
     else {
-        next(P) = first(Lpegawai);
-        prev(first(Lpegawai)) = P;
-        first(Lpegawai) = P;
+        next(P) = first(Lmahasiswa);
+        prev(first(Lmahasiswa)) = P;
+        first(Lmahasiswa) = P;
     }
 };
 
-void insertDepartemen(list_departemen &Ldepartemen, address_departemen P){
-    if(first(Ldepartemen) == NULL){
-        first(Ldepartemen) = P;
-        last(Ldepartemen) = P;
+void deleteFirstBeasiswa(list_beasiswa &Lbeasiswa, address_beasiswa &P){
+    if (first(Lbeasiswa) == last(Lbeasiswa)) {
+        first(Lbeasiswa) = NULL;
+        last(Lbeasiswa) = NULL;
     }
     else {
-        next(P) = first(Ldepartemen);
-        prev(first(Ldepartemen)) = P;
-        first(Ldepartemen) = P;
-    }
-};
-
-void deleteFirstPegawai(list_pegawai &Lpegawai, address_pegawai &P){
-    if (first(Lpegawai) == last(Lpegawai)) {
-        first(Lpegawai) = NULL;
-        last(Lpegawai) = NULL;
-    }
-    else {
-        P = first(Lpegawai);
-        first(Lpegawai) = next(P);
+        P = first(Lbeasiswa);
+        first(Lbeasiswa) = next(P);
         next(P) = NULL;
-        prev(first(Lpegawai)) = NULL;
+        prev(first(Lbeasiswa)) = NULL;
     }
 };
-void deleteAfterPegawai(list_pegawai &Lpegawai, address_pegawai &P){
-    if (first(Lpegawai) == last(Lpegawai)) {
-        first(Lpegawai) = NULL;
-        last(Lpegawai) = NULL;
+void deleteAfterBeasiswa(list_beasiswa &Lbeasiswa, address_beasiswa &P){
+    if (first(Lbeasiswa) == last(Lbeasiswa)) {
+        first(Lbeasiswa) = NULL;
+        last(Lbeasiswa) = NULL;
     }
     else {
-        address_pegawai Prec = prev(P);
+        address_beasiswa Prec = prev(P);
         next(Prec) = next(P);
         prev(next(P)) = Prec;
         next(P) = NULL;
         prev(P) = NULL;
     }
 };
-void deleteLastPegawai(list_pegawai &Lpegawai, address_pegawai &P){
-    if (first(Lpegawai) == last(Lpegawai)) {
-        first(Lpegawai) = NULL;
-        last(Lpegawai) = NULL;
+void deleteLastBeasiswa(list_beasiswa &Lbeasiswa, address_beasiswa &P){
+    if (first(Lbeasiswa) == last(Lbeasiswa)) {
+        first(Lbeasiswa) = NULL;
+        last(Lbeasiswa) = NULL;
     }
     else {
-        P = last(Lpegawai);
-        last(Lpegawai) = prev(P);
-        next(last(Lpegawai)) = NULL;
+        P = last(Lbeasiswa);
+        last(Lbeasiswa) = prev(P);
+        next(last(Lbeasiswa)) = NULL;
         prev(P) = NULL;
     }
 
 };
-void deleteFirstDepartemen(list_departemen &Ldepartemen, address_departemen &P){
-    if (first(Ldepartemen) == last(Ldepartemen)) {
-        first(Ldepartemen) = NULL;
-        last(Ldepartemen) = NULL;
+void deleteFirstMahasiswa(list_mahasiswa &Lmahasiswa, address_mahasiswa &P){
+    if (first(Lmahasiswa) == last(Lmahasiswa)) {
+        first(Lmahasiswa) = NULL;
+        last(Lmahasiswa) = NULL;
     }
     else {
-        P = first(Ldepartemen);
-        first(Ldepartemen) = next(P);
+        P = first(Lmahasiswa);
+        first(Lmahasiswa) = next(P);
         next(P) = NULL;
-        prev(first(Ldepartemen)) = NULL;
+        prev(first(Lmahasiswa)) = NULL;
     }
 };
-void deleteAfterDepartemen(list_departemen &Ldepartemen, address_departemen &P){
-    if (first(Ldepartemen) == last(Ldepartemen)) {
-        first(Ldepartemen) = NULL;
-        last(Ldepartemen) = NULL;
+void deleteAfterMahasiswa(list_mahasiswa &Lmahasiswa, address_mahasiswa &P){
+    if (first(Lmahasiswa) == last(Lmahasiswa)) {
+        first(Lmahasiswa) = NULL;
+        last(Lmahasiswa) = NULL;
     }
     else {
-        address_departemen Prec = prev(P);
+        address_mahasiswa Prec = prev(P);
         next(Prec) = next(P);
         prev(next(P)) = Prec;
         next(P) = NULL;
         prev(P) = NULL;
     }
 };
-void deleteLastDepartemen(list_departemen &Ldepartemen, address_departemen &P){
-    if (first(Ldepartemen) == last(Ldepartemen)) {
-        first(Ldepartemen) = NULL;
-        last(Ldepartemen) = NULL;
+void deleteLastMahasiswa(list_mahasiswa &Lmahasiswa, address_mahasiswa &P){
+    if (first(Lmahasiswa) == last(Lmahasiswa)) {
+        first(Lmahasiswa) = NULL;
+        last(Lmahasiswa) = NULL;
     }
     else {
-        P = last(Ldepartemen);
-        last(Ldepartemen) = prev(P);
-        next(last(Ldepartemen)) = NULL;
+        P = last(Lmahasiswa);
+        last(Lmahasiswa) = prev(P);
+        next(last(Lmahasiswa)) = NULL;
         prev(P) = NULL;
     }
 
 };
 
-void printPegawai(list_pegawai Lpegawai){
-    if(first(Lpegawai) == NULL){
-        cout<<"Daftar Pegawai Kosong"<<endl;
+void printBeasiswa(list_beasiswa Lbeasiswa){
+    if(first(Lbeasiswa) == NULL){
+        cout<<"Anda Belum Memasukkan Data Beasiswa"<<endl;
     }
     else {
-        address_pegawai P = first(Lpegawai);
+        address_beasiswa P = first(Lbeasiswa);
         while (P != NULL){
             cout<<endl;
-            cout<<"Nama Pegawai = "<<info(P).nama<<endl;
-            cout<<"Nip = "<<info(P).nip<<endl;
-            cout<<"Departemen = ";
+            cout<<"Jenis Beasiswa = "<<info(P).jenis<<endl;
+            cout<<"Tahun = "<<info(P).tahun<<endl;
             P = next(P);
             cout<<endl;
         }
     }
     cout<<endl;
 };
+
+void printMahasiswa(list_mahasiswa Lmahasiswa){
+    if(first(Lmahasiswa) == NULL){
+        cout<<"Anda Belum Memasukkan Data Beasisw"<<endl;
+    }
+    else {
+        address_mahasiswa P = first(Lmahasiswa);
+        while (P != NULL){
+            cout<<endl;
+            cout<<"Nama Mahasiswa = "<<info(P).nama<<endl;
+            cout<<"Nim Mahasiswa = "<<info(P).nim<<endl;
+            P = next(P);
+            cout<<endl;
+        }
+    }
+    cout<<endl;
+};
+
+/*
 
 void printPegawai1(list_pegawai Lpegawai){
     if(first(Lpegawai) == NULL){
@@ -215,24 +230,6 @@ void printPegawai1(list_pegawai Lpegawai){
             cout<<"Nama Pegawai = "<<info(P).nama<<endl;
             cout<<"Nip = "<<info(P).nip<<endl;
             cout<<"Departemen = ";
-            P = next(P);
-            cout<<endl;
-        }
-    }
-    cout<<endl;
-};
-
-void printDepartemen(list_departemen Ldepartemen){
-    if(first(Ldepartemen) == NULL){
-        cout<<"Daftar Departemen Kosong"<<endl;
-    }
-    else {
-        address_departemen P = first(Ldepartemen);
-        while (P != NULL){
-            cout<<endl;
-            cout<<"Nama Departemen = "<<info(P).nama_departemen<<endl;
-            cout<<"Alamat = "<<info(P).alamat<<endl;
-            cout<<"Pegawai = ";
             P = next(P);
             cout<<endl;
         }
@@ -257,20 +254,22 @@ void printDepartemen1(list_departemen Ldepartemen){
     cout<<endl;
 };
 
-void deletePegawai(list_pegawai &Lpegawai, infotype_pegawai X){
-        if (first(Lpegawai) == NULL){
+*/
+
+void deleteBeasiswa(list_beasiswa &Lbeasiswa, infotype_beasiswa X){
+        if (first(Lbeasiswa) == NULL){
         cout<<"Error Data Kosong"<<endl;
     }
     else {
-        address_pegawai P = findPegawai(Lpegawai, X);
-        if (P == first(Lpegawai)){
-            deleteFirstPegawai(Lpegawai, P);
+        address_beasiswa P = findBeasiswa(Lbeasiswa, X);
+        if (P == first(Lbeasiswa)){
+            deleteFirstBeasiswa(Lbeasiswa, P);
         }
-        else if (P == last(Lpegawai)){
-            deleteLastPegawai(Lpegawai, P);
+        else if (P == last(Lbeasiswa)){
+            deleteAfterBeasiswa(Lbeasiswa, P);
         }
         else if (P != NULL){
-            deleteAfterPegawai(Lpegawai, P);
+            deleteLastBeasiswa(Lbeasiswa, P);
         }
         else {
             cout<<"Data Tidak Ditemukan"<<endl;
@@ -278,23 +277,23 @@ void deletePegawai(list_pegawai &Lpegawai, infotype_pegawai X){
     }
 };
 
-void deleteDepartemen(list_departemen &Ldepartemen,infotype_departemen X){
-        if (first(Ldepartemen) == NULL){
+void deleteMahasiswa(list_mahasiswa &Lmahasiswa,infotype_mahasiswa X){
+        if (first(Lmahasiswa) == NULL){
         cout<<"Error Data Kosong"<<endl;
     }
     else {
-        address_departemen P = findDepartemen(Ldepartemen, X);
-        while (info(P).nama_departemen != X.nama_departemen and P != NULL){
+        address_mahasiswa P = findMahasiswa(Lmahasiswa, X);
+        while (info(P).nama != X.nama and P != NULL){
             P = next(P);
         }
-        if (P == first(Ldepartemen)){
-            deleteFirstDepartemen(Ldepartemen, P);
+        if (P == first(Lmahasiswa)){
+            deleteFirstMahasiswa(Lmahasiswa, P);
         }
-        else if (P == last(Ldepartemen)){
-            deleteAfterDepartemen(Ldepartemen, P);
+        else if (P == last(Lmahasiswa)){
+            deleteAfterMahasiswa(Lmahasiswa, P);
         }
-        else if (P != last(Ldepartemen) or P != first(Ldepartemen)){
-            deleteLastDepartemen(Ldepartemen, P);
+        else if (P != last(Lmahasiswa) or P != first(Lmahasiswa)){
+            deleteFirstMahasiswa(Lmahasiswa, P);
         }
         else {
             cout<<"Data Tidak Ditemukan"<<endl;

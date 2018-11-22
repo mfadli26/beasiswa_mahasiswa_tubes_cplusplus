@@ -13,37 +13,43 @@
 
 using namespace std;
 
-struct infotype_beasiswa{
+struct infotype_beasiswa
+{
     string jenis;
     int tahun;
 };
-struct infotype_mahasiswa{
+struct infotype_mahasiswa
+{
     string nama;
     string nim;
 };
 
 
-typedef struct elmlist_pegawai *address_pegawai;
-typedef struct elmlist_departemen *address_departemen;
+typedef struct elmlist_beasiswa *address_beasiswa;
+typedef struct elmlist_mahasiswa *address_mahasiswa;
 
-struct elmlist_beasiswa{
+struct elmlist_beasiswa
+{
     infotype_beasiswa info;
-    address_beasiswai next;
+    address_beasiswa next;
     address_beasiswa prev;
 };
 
-struct elmlist_mahasiswa{
+struct elmlist_mahasiswa
+{
     infotype_mahasiswa info;
     address_mahasiswa next;
     address_mahasiswa prev;
 };
 
-struct list_beasiswa{
+struct list_beasiswa
+{
     address_beasiswa first;
     address_beasiswa last;
 };
 
-struct list_mahasiswa{
+struct list_mahasiswa
+{
     address_mahasiswa first;
     address_mahasiswa last;
 };
@@ -72,14 +78,14 @@ void deleteFirstMahasiswa(list_mahasiswa &Lmahasiswa, address_mahasiswa &P);
 void deleteAfterMahasiswa(list_mahasiswa &Lmahasiswa, address_mahasiswa &P);
 void deleteLastMahasiswa(list_mahasiswa &Lmahasiswa, address_mahasiswa &P);
 
-void deletePegawai(list_pegawai &Lpegawai, infotype_pegawai X);
-void deleteDepartemen(list_pegawai &Ldepartemen,infotype_departemen X);
+void deleteBeasiswa(list_beasiswa &Lbeasiswa, address_beasiswa X);
+void deleteMahasiswa(list_mahasiswa &Lmahasiswa,address_mahasiswa X);
 
 //*Proses*//
-void printPegawai(list_pegawai Lpegawai);
-void printDepartemen(list_departemen Ldepartemen);
+void printBeasiswa(list_beasiswa Lbeasiswa);
+void printMahasiswa(list_mahasiswa Lmahasiswa);
 
-void printPegawai1(list_pegawai Lpegawai);
-void printDepartemen1(list_departemen Ldepartemen);
+void printBeasiswa1(list_beasiswa Lbeasiswa);
+void printMahasiswa1(list_mahasiswa Lmahasiswa);
 
 #endif // LINK_LISK_H_INCLUDED
