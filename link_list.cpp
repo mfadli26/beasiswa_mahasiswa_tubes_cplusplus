@@ -202,7 +202,7 @@ void printBeasiswa(list_beasiswa Lbeasiswa){
 
 void printMahasiswa(list_mahasiswa Lmahasiswa){
     if(first(Lmahasiswa) == NULL){
-        cout<<"Anda Belum Memasukkan Data Beasisw"<<endl;
+        cout<<"Anda Belum Memasukkan Data Mahasiswa"<<endl;
     }
     else {
         address_mahasiswa P = first(Lmahasiswa);
@@ -256,48 +256,27 @@ void printDepartemen1(list_departemen Ldepartemen){
 
 */
 
-void deleteBeasiswa(list_beasiswa &Lbeasiswa, infotype_beasiswa X){
-        if (first(Lbeasiswa) == NULL){
-        cout<<"Error Data Kosong"<<endl;
+void deleteBeasiswa(list_beasiswa &Lbeasiswa, address_beasiswa P){
+    if (P == first(Lbeasiswa)){
+        deleteFirstBeasiswa(Lbeasiswa, P);
     }
-    else {
-        address_beasiswa P = findBeasiswa(Lbeasiswa, X);
-        if (P == first(Lbeasiswa)){
-            deleteFirstBeasiswa(Lbeasiswa, P);
-        }
-        else if (P == last(Lbeasiswa)){
-            deleteAfterBeasiswa(Lbeasiswa, P);
-        }
-        else if (P != NULL){
-            deleteLastBeasiswa(Lbeasiswa, P);
-        }
-        else {
-            cout<<"Data Tidak Ditemukan"<<endl;
-        }
+    else if (P == last(Lbeasiswa)){
+        deleteLastBeasiswa(Lbeasiswa, P);
+    }
+    else{
+        deleteAfterBeasiswa(Lbeasiswa, P);
     }
 };
 
-void deleteMahasiswa(list_mahasiswa &Lmahasiswa,infotype_mahasiswa X){
-        if (first(Lmahasiswa) == NULL){
-        cout<<"Error Data Kosong"<<endl;
+void deleteMahasiswa(list_mahasiswa &Lmahasiswa, address_mahasiswa P){
+    if (P == first(Lmahasiswa)){
+        deleteFirstMahasiswa(Lmahasiswa, P);
     }
-    else {
-        address_mahasiswa P = findMahasiswa(Lmahasiswa, X);
-        while (info(P).nama != X.nama and P != NULL){
-            P = next(P);
-        }
-        if (P == first(Lmahasiswa)){
-            deleteFirstMahasiswa(Lmahasiswa, P);
-        }
-        else if (P == last(Lmahasiswa)){
-            deleteAfterMahasiswa(Lmahasiswa, P);
-        }
-        else if (P != last(Lmahasiswa) or P != first(Lmahasiswa)){
-            deleteFirstMahasiswa(Lmahasiswa, P);
-        }
-        else {
-            cout<<"Data Tidak Ditemukan"<<endl;
-        }
+    else if (P == last(Lmahasiswa)){
+        deleteLastMahasiswa(Lmahasiswa, P);
+    }
+    else{
+        deleteAfterMahasiswa(Lmahasiswa, P);
     }
 };
 

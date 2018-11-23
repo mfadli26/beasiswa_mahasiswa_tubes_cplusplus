@@ -20,21 +20,24 @@ int main()
     menu_awal:
     int menu_1;
     int menu_2;
+    int menu_3;
+    int menu_4;
+    string hpus_beasiswa;
     system("cls");
-    cout<<"|                Beasiswa Dan Mahasiswa                |"<<endl<<endl;
-    cout<<"-------------------------------------------------------"<<endl;
-    cout<<"|                       | Menu  |"<<endl<<endl;
-    cout<<"| 1. Tambah Data Beasiswa Dan Mahasiswa"<<endl;
-    cout<<"| 2. Lihat Data Beasiswa Dan Mahasiswa"<<endl;
-    cout<<"| 3. Hapus Data Beasiswa Dan Mahasiswa"<<endl;
-    cout<<"| 4. Tambah Beasiswa Ke Mahasiswa"<<endl;
-    cout<<"| 5. Lihat Mahasiswa Yang Mendapatkan Beasiswa"<<endl;
-    cout<<"| 6. Hapus Beasiswa Yang Dimiliki Mahasiswa"<<endl;
-    cout<<"| 7. Lihat Mahasiswa Dengan Beasiswa Paling Banyak"<<endl;
-    cout<<"| 8. Lihat Mahasiswa Dengan Beasiswa Paling Sedikit"<<endl;
-    cout<<"| 9. Quit                 "<<endl;
-    cout<<"-=====================================================-"<<endl;
-    cout<<"Masukan Pilihan Anda --> ";cin>>pilihan;
+    cout<<"|                    Beasiswa Dan Mahasiswa                     |"<<endl<<endl;
+    cout<<"----------------------------------------------------------------"<<endl;
+    cout<<"                        | Menu  |"<<endl<<endl;
+    cout<<" 1. Tambah Data Beasiswa Dan Mahasiswa"<<endl;
+    cout<<" 2. Lihat Data Beasiswa Dan Mahasiswa"<<endl;
+    cout<<" 3. Cari Data Beasiswa Dan Mahasiswa"<<endl;
+    cout<<" 4. Hapus Data Beasiswa Dan Mahasiswa"<<endl;
+    cout<<" 5. Tambah Beasiswa Ke Mahasiswa"<<endl;
+    cout<<" 6. Lihat Mahasiswa Yang Mendapatkan Beasiswa"<<endl;
+    cout<<" 7. Hapus Beasiswa Yang Dimiliki Mahasiswa"<<endl;
+    cout<<" 8. Lihat Mahasiswa Dengan Beasiswa Terbanyak Dan Tersedikit"<<endl;
+    cout<<" 9. Quit                 "<<endl;
+    cout<<"-===============================================================-"<<endl;
+    cout<<"Masukan Pilihan Anda : ";cin>>pilihan;
     switch(pilihan){
         case 1:{
             menu_satu:
@@ -43,7 +46,7 @@ int main()
             cout<<" 1.Tambah Data Beasiswa "<<endl;
             cout<<" 2.Tambah Data Mahasiswa "<<endl;
             cout<<" 3.Back"<<endl;
-            cout<<"Masukan Pilihan Anda --> ";cin>>menu_1;
+            cout<<"Masukan Pilihan Anda : ";cin>>menu_1;
             if(menu_1 == 1){
                 system("cls");
                 cout<<"Tambah Data Beasiswa"<<endl;
@@ -95,27 +98,29 @@ int main()
         case 2:{
             menu_dua:
             system("cls");
-            cout<<" Menu Lihat Data "<<endl;
+            cout<<"       Menu Lihat Data "<<endl;
+            cout<<"---------------------------"<<endl<<endl;
             cout<<" 1.Lihat Data Beasiswa "<<endl;
             cout<<" 2.Lihat Data Mahasiswa "<<endl;
             cout<<" 3.Back"<<endl;
-            cout<<"Masukan Pilihan Anda --> ";cin>>menu_2;
+            cout<<"Masukan Pilihan Anda : ";cin>>menu_2;
             if(menu_2 == 1){
                 system("cls");
-                cout<<"Data Beasiswa"<<endl;
+                cout<<"               Data Beasiswa"<<endl;
+                cout<<"-------------------------------------------"<<endl;
                 printBeasiswa(Lbeasiswa);
                 cout<<endl<<"Back to menu...";
                 getche();
-                goto menu_awal;
+                goto menu_dua;
             }
             else if(menu_2 == 2){
-                system("cls");0
-
-                cout<<"Data Mahasiswa"<<endl;
+                system("cls");
+                cout<<"               Data Mahasiswa"<<endl;
+                cout<<"--------------------------------------------"<<endl;
                 printMahasiswa(Lmahasiswa);
                 cout<<endl<<"Back to menu...";
                 getche();
-                goto menu_awal;
+                goto menu_dua;
             }
             else if(menu_2 == 3){
                 goto menu_awal;
@@ -123,16 +128,136 @@ int main()
             else{
                 cout<<"Pilihan Menu Salah"<<endl;
                 getche();
-                goto menu_satu;
+                goto menu_dua;
             }
         }
 
         case 3:{
+            menu_tiga:
+            system("cls");
+            cout<<"Menu Pencarian Data Beasiswa Dan Mahasiswa"<<endl;
+            cout<<"-=========================================-"<<endl;
+            cout<<" 1. Cari Data Beasiswa"<<endl;
+            cout<<" 2. Cari Data Mahasiswa"<<endl;
+            cout<<" 3. Back"<<endl;
+            cout<<"___________________________________________"<<endl;
+            cout<<"Masukkan Pilihan Anda : ";cin>>menu_3;
+            if(menu_3 == 1){
+                system("cls");
+                cout<<"         Pencarian Data Beasiswa"<<endl;
+                cout<<"========================================"<<endl;
+                cout<<"Masukkan Jenis Beasiswa : ";cin>>infoB.jenis;
+                address_beasiswa Cari_B = findBeasiswa(Lbeasiswa, infoB);
+                if(Cari_B != NULL){
+                    system("cls");
+                    cout<<"         Pencarian Data Beasiswa"<<endl;
+                    cout<<"========================================"<<endl;
+                    cout<<"Jenis : "<<info(Cari_B).jenis<<endl;
+                    cout<<"Tahun : "<<info(Cari_B).tahun<<endl<<endl;
+                    cout<<"Data Ditemukan"<<endl;
+                    cout<<"Klik [Enter] Untuk Kembali...."<<endl;
+                    getche();
+                    goto menu_tiga;
+                }
+                else{
+                    system("cls");
+                    cout<<"         Pencarian Data Beasiswa"<<endl;
+                    cout<<"========================================"<<endl;
+                    cout<<"Jenis Beasiswa Yang Anda Cari Tidak Ditemukan"<<endl<<endl<<endl;
+                    cout<<"Klik [Enter] Untuk Kembali...."<<endl;
+                    getche();
+                    goto menu_tiga;
+                }
 
+            }
+            else if(menu_3 == 2){
+                system("cls");
+                cout<<"         Pencarian Data Mahasiswa"<<endl;
+                cout<<"========================================"<<endl;
+                cout<<"Masukkan Nama Mahasiswa : ";cin>>infoM.nama;
+                address_mahasiswa Cari_M = findMahasiswa(Lmahasiswa, infoM);
+                if(Cari_M != NULL){
+                    system("cls");
+                    cout<<"         Pencarian Data Beasiswa"<<endl;
+                    cout<<"========================================"<<endl;
+                    cout<<"Nama : "<<info(Cari_M).nama<<endl;
+                    cout<<"Nim : "<<info(Cari_M).nim<<endl<<endl;
+                    cout<<"Data Ditemukan"<<endl;
+                    cout<<"Klik [Enter] Untuk Kembali...."<<endl;
+                    getche();
+                    goto menu_tiga;
+                }
+                else{
+                    system("cls");
+                    cout<<"         Pencarian Data Beasiswa"<<endl;
+                    cout<<"========================================"<<endl;
+                    cout<<"Nama Mahasiswa Yang Anda Cari Tidak Ditemukan"<<endl<<endl<<endl;
+                    cout<<"Klik [Enter] Untuk Kembali...."<<endl;
+                    getche();
+                    goto menu_tiga;
+                }
+            }
+            else if(menu_3 == 3){
+                goto menu_awal;
+            }
+            else{
+                cout<<"Menu Yang Anda Pilih Salah..."<<endl;
+                getche();
+                goto menu_tiga;
+            }
         }
 
         case 4:{
+            menu_empat:
+            system("cls");
+            cout<<" Menu Hapus Data Beasiswa Dan Mahasiswa"<<endl;
+            cout<<"======================================="<<endl;
+            cout<<" 1. Hapus Data Beasiswa"<<endl;
+            cout<<" 2. Hapus Data Mahasiswa"<<endl;
+            cout<<" 3. Back"<<endl;
+            cout<<"_______________________________________"<<endl;
+            cout<<"Masukkan Pilihan Anda : ";cin>>menu_4;
+            if( menu_4 == 1){
+                cout<<"       Hapus Data Beasiswa"<<endl;
+                cout<<"================================="<<endl;
+                cout<<"Masukkuan Jenis Beasiswa :";cin>>infoB.jenis;
+                cout<<endl;
+                address_beasiswa cari_hapus_beasiswa = findBeasiswa(Lbeasiswa, infoB);
+                if(cari_hapus_beasiswa != NULL){
+                    system("cls");
+                    cout<<"       Hapus Data Beasiswa"<<endl;
+                    cout<<"================================="<<endl;
+                    cout<<"Data Ditemukan"<<endl;
+                    cout<<"Jenis Beasiswa : "<<info(cari_hapus_beasiswa).jenis<<endl;
+                    cout<<"Tahun Beasiswa : "<<info(cari_hapus_beasiswa).tahun<<endl<<endl;
+                    cout<<"Apakah Anda Yakin Menghapus Data Beasiswa? [y/n] : ";cin>>hpus_beasiswa;
+                    if(hpus_beasiswa == "y" or hpus_beasiswa == "Y"){
+                        deleteBeasiswa(Lbeasiswa, cari_hapus_beasiswa);
+                        cout<<"Data Beasiswa Berhasil Dihapus"<<endl;
+                        getche();
+                        goto menu_empat;
+                    }
+                    else{
+                        goto menu_empat;
+                    }
+                }
+                else{
+                    cout<<"Data Tidak Ditemukan atau List Kosong...";
+                    getch();
+                    goto menu_empat;
+                }
+            }
+            else if(menu_4 == 2){
 
+            }
+            else if(menu_4 == 3){
+                goto menu_awal;
+            }
+            else{
+                cout<<"Menu Yang Anda Pilih Salah..."<<endl;
+                getche();
+                goto menu_empat;
+            }
         }
 
         case 5:{
@@ -148,11 +273,7 @@ int main()
         }
 
         case 8:{
-
-        }
-
-        case 9:{
-
+            exit(0);
         }
     }
 }
