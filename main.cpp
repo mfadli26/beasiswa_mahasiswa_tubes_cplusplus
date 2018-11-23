@@ -36,8 +36,7 @@ int main()
     cout<<" 6. Tambah Beasiswa Ke Mahasiswa"<<endl;
     cout<<" 7. Lihat Mahasiswa Yang Mendapatkan Beasiswa"<<endl;
     cout<<" 8. Hapus Beasiswa Yang Dimiliki Mahasiswa"<<endl;
-    cout<<" 9. Lihat Mahasiswa Dengan Beasiswa Terbanyak Dan Tersedikit"<<endl;
-    cout<<" 10. Quit                 "<<endl;
+    cout<<" 9. Quit                 "<<endl;
     cout<<"-===============================================================-"<<endl;
     cout<<"Masukan Pilihan Anda : ";cin>>pilihan;
     switch(pilihan){
@@ -301,8 +300,10 @@ int main()
         case 7:{
 
         }
-
         case 8:{
+
+        }
+        case 9:{
             exit(0);
         }
     }
