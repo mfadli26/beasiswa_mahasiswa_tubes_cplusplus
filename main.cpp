@@ -8,6 +8,7 @@ using namespace std;
 
 int main()
 {
+
     int pilihan;
     list_beasiswa Lbeasiswa;
     list_mahasiswa Lmahasiswa;
