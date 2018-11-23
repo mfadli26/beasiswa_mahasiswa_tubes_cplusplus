@@ -23,6 +23,7 @@ int main()
     int menu_3;
     int menu_4;
     string hpus_beasiswa;
+    string hpus_mahasiswa;
     system("cls");
     cout<<"|                    Beasiswa Dan Mahasiswa                     |"<<endl<<endl;
     cout<<"----------------------------------------------------------------"<<endl;
@@ -31,11 +32,12 @@ int main()
     cout<<" 2. Lihat Data Beasiswa Dan Mahasiswa"<<endl;
     cout<<" 3. Cari Data Beasiswa Dan Mahasiswa"<<endl;
     cout<<" 4. Hapus Data Beasiswa Dan Mahasiswa"<<endl;
-    cout<<" 5. Tambah Beasiswa Ke Mahasiswa"<<endl;
-    cout<<" 6. Lihat Mahasiswa Yang Mendapatkan Beasiswa"<<endl;
-    cout<<" 7. Hapus Beasiswa Yang Dimiliki Mahasiswa"<<endl;
-    cout<<" 8. Lihat Mahasiswa Dengan Beasiswa Terbanyak Dan Tersedikit"<<endl;
-    cout<<" 9. Quit                 "<<endl;
+    cout<<" 5. Update Data Beasiswa Dan Mahasiswa"<<endl;
+    cout<<" 6. Tambah Beasiswa Ke Mahasiswa"<<endl;
+    cout<<" 7. Lihat Mahasiswa Yang Mendapatkan Beasiswa"<<endl;
+    cout<<" 8. Hapus Beasiswa Yang Dimiliki Mahasiswa"<<endl;
+    cout<<" 9. Lihat Mahasiswa Dengan Beasiswa Terbanyak Dan Tersedikit"<<endl;
+    cout<<" 10. Quit                 "<<endl;
     cout<<"-===============================================================-"<<endl;
     cout<<"Masukan Pilihan Anda : ";cin>>pilihan;
     switch(pilihan){
@@ -218,6 +220,7 @@ int main()
             cout<<"_______________________________________"<<endl;
             cout<<"Masukkan Pilihan Anda : ";cin>>menu_4;
             if( menu_4 == 1){
+                system("cls");
                 cout<<"       Hapus Data Beasiswa"<<endl;
                 cout<<"================================="<<endl;
                 cout<<"Masukkuan Jenis Beasiswa :";cin>>infoB.jenis;
@@ -248,7 +251,34 @@ int main()
                 }
             }
             else if(menu_4 == 2){
-
+                cout<<"       Hapus Data Mahasiswa"<<endl;
+                cout<<"================================="<<endl;
+                cout<<"Masukkuan Nama Mahasiswa :";cin>>infoM.nama;
+                cout<<endl;
+                address_mahasiswa cari_hapus_mahasiswa = findMahasiswa(Lmahasiswa, infoM);
+                if(cari_hapus_mahasiswa != NULL){
+                    system("cls");
+                    cout<<"       Hapus Data Mahasiswa"<<endl;
+                    cout<<"================================="<<endl;
+                    cout<<"Data Ditemukan"<<endl;
+                    cout<<"Nama Mahasiswa : "<<info(cari_hapus_mahasiswa).nama<<endl;
+                    cout<<"Nim Mahasiswa : "<<info(cari_hapus_mahasiswa).nim<<endl<<endl;
+                    cout<<"Apakah Anda Yakin Menghapus Data Mahasiswa? [y/n] : ";cin>>hpus_mahasiswa;
+                    if(hpus_mahasiswa== "y" or hpus_mahasiswa== "Y"){
+                        deleteMahasiswa(Lmahasiswa, cari_hapus_mahasiswa);
+                        cout<<"Data Mahasiswa Berhasil Dihapus"<<endl;
+                        getche();
+                        goto menu_empat;
+                    }
+                    else{
+                        goto menu_empat;
+                    }
+                }
+                else{
+                    cout<<"Data Tidak Ditemukan atau List Kosong...";
+                    getch();
+                    goto menu_empat;
+                }
             }
             else if(menu_4 == 3){
                 goto menu_awal;
