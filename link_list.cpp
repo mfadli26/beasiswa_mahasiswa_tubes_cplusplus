@@ -214,7 +214,6 @@ void printMahasiswa(list_mahasiswa Lmahasiswa){
             cout<<endl;
         }
     }
-    cout<<endl;
 };
 
 /*
@@ -280,3 +279,12 @@ void deleteMahasiswa(list_mahasiswa &Lmahasiswa, address_mahasiswa P){
     }
 };
 
+void updateDataMahasiswa(address_mahasiswa &M, infotype_mahasiswa A){
+    info(M).nama = A.nama;
+    info(M).nim = A.nim;
+};
+
+void updateDataBeasiswa(address_beasiswa &B, infotype_beasiswa A){
+    info(B).jenis = A.jenis;
+    info(B).tahun = A.tahun;
+};

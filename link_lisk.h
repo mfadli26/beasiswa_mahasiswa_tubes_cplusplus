@@ -81,6 +81,10 @@ void deleteLastMahasiswa(list_mahasiswa &Lmahasiswa, address_mahasiswa &P);
 void deleteBeasiswa(list_beasiswa &Lbeasiswa, address_beasiswa X);
 void deleteMahasiswa(list_mahasiswa &Lmahasiswa,address_mahasiswa X);
 
+//Update Data
+void updateDataMahasiswa(address_mahasiswa &M, infotype_mahasiswa A);
+void updateDataBeasiswa(address_beasiswa &B, infotype_beasiswa A);
+
 //*Proses*//
 void printBeasiswa(list_beasiswa Lbeasiswa);
 void printMahasiswa(list_mahasiswa Lmahasiswa);
