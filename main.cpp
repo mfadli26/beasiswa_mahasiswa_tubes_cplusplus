@@ -21,11 +21,14 @@ int main()
     CreateListRelasi(Lrelasi);
     infotype_beasiswa infoB;
     infotype_mahasiswa infoM;
-    infoB.jenis = "a";
+    infoB.jenis = "penuh";
     infoB.tahun = 2001;
     insertBeasiswa(Lbeasiswa, alokasiBeasiswa(infoB));
     infoM.nama = "ucok";
-    infoM.nim = "rofl";
+    infoM.nim = "13109p";
+    infoM.angkatan = "2006";
+    infoM.jurusan = "Bisnis";
+    infoM.asal = "Jogja";
     insertMahasiswa(Lmahasiswa, alokasiMahasiswa(infoM));
     menu_awal:
     int menu_1;
@@ -47,7 +50,8 @@ int main()
     cout<<" 6. Tambah Beasiswa Ke Mahasiswa"<<endl;
     cout<<" 7. Lihat Mahasiswa Yang Mendapatkan Beasiswa"<<endl;
     cout<<" 8. Hapus Beasiswa Yang Dimiliki Mahasiswa"<<endl;
-    cout<<" 9. Quit                 "<<endl;
+    cout<<" 9. Update Relasi Beasiswa Yang Dimiliki Mahasiswa"<<endl;
+    cout<<" 10. Quit                 "<<endl;
     cout<<"-===============================================================-"<<endl;
     cout<<"Masukan Pilihan Anda : ";cin>>pilihan;
     switch(pilihan){
@@ -396,7 +400,7 @@ int main()
 
         case 6:{
             system("cls");
-            cout<<" Lihat Mahasiswa Yang Mendapatkan Beasiswa "<<endl;
+            cout<<" Tambah Mahasiswa Yang Mendapatkan Beasiswa "<<endl;
             cout<<"---------------------------"<<endl<<endl;
             printBeasiswaRelasiMahasiswa(Lbeasiswa, Lrelasi);
             cout<<" Beasiswa mana yang akan dipilih (jenis) : ";cin>>infoB.jenis;
@@ -464,6 +468,44 @@ int main()
             goto menu_awal;
         }
         case 9:{
+            system("cls");
+            cout<<" Update Relasi Beasiswa Yang Dimiliki Mahasiswa "<<endl;
+            cout<<"------------------------------------------------"<<endl<<endl;
+            printBeasiswaRelasiMahasiswa(Lbeasiswa, Lrelasi);
+            cout<<" Beasiswa mana yang akan dipilih (jenis) : ";cin>>infoB.jenis;
+            address_beasiswa cari_beasiswa = findBeasiswa(Lbeasiswa, infoB);
+            if(cari_beasiswa){
+                printBeasiswaRelasiTertentu(Lrelasi, cari_beasiswa);
+                cout<<" Akan Menampilkan Mahasiswanya";
+                getch();
+                cout<<endl<<endl;
+                printBeasiswaYangDimilikiMahasiswa(Lrelasi, cari_beasiswa);
+                cout<<endl<<" Mahasiswa mana yang akan digantikan (Nama) : ";cin>>infoM.nama;
+                address_mahasiswa cari_mahasiswa = findMahasiswa(Lmahasiswa, infoM);
+                if(cari_mahasiswa){
+                    printMahasiswa(Lmahasiswa);
+                    cout<<endl<<" Mahasiswa mana yang akan dipilih (Nama) : ";cin>>infoM.nama;
+                    address_mahasiswa cari_mahasiswa2 = findMahasiswa(Lmahasiswa, infoM);
+                    if(cari_mahasiswa2){
+                        address_relasi cari_relasi = findRelasi(Lrelasi, cari_beasiswa, cari_mahasiswa);
+                        address_relasi cari_relasi2 = findRelasi(Lrelasi, cari_beasiswa, cari_mahasiswa2);
+                        if(cari_relasi2){
+                            cout<<endl<<" Beasiswa tidak dapat dua kali, Mahasiswa telah lebih dulu memiliki Beasiswa";
+                            getch();
+                            goto menu_awal;
+                        }
+                        updateRelasiBeasiswa(cari_relasi, cari_beasiswa, cari_mahasiswa2);
+                        cout<<endl<<" Relasi Beasiswa telah diupdate Mahasiswanya";
+                        getch();
+                        goto menu_awal;
+                    }
+                }
+            }
+            cout<<" Data Tidak Ditemukan ";
+            getch();
+            goto menu_awal;
+        }
+        case 10:{
             exit(0);
         }
     }

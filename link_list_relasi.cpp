@@ -99,18 +99,20 @@ address_relasi findRelasi(relasi_list Lrelasi, address_beasiswa B, address_mahas
 };
 
 void printBeasiswaYangDimilikiMahasiswa(relasi_list Lrelasi, address_beasiswa B){
-    address_relasi Q = first(Lrelasi);
-    do{
-        if(Beasiswa(Q) == B){
-            cout<<"Nama Mahasiswa     : "<<info(Mahasiswa(Q)).nama<<endl;
-            cout<<"Nim Mahasiswa      : "<<info(Mahasiswa(Q)).nim<<endl;
-            cout<<"Angkatan Mahasiswa : "<<info(Mahasiswa(Q)).angkatan<<endl;
-            cout<<"Jurusan Mahasiswa  : "<<info(Mahasiswa(Q)).jurusan<<endl;
-            cout<<"Asal Mahasiswa     : "<<info(Mahasiswa(Q)).asal<<endl<<endl;
-        }
-        Q = next(Q);
-    } while(Q != first(Lrelasi));
-    cout<<endl<<"-----------------------"<<endl;
+    if(first(Lrelasi) != NULL){
+        address_relasi Q = first(Lrelasi);
+        do{
+            if(Beasiswa(Q) == B){
+                cout<<"Nama Mahasiswa     : "<<info(Mahasiswa(Q)).nama<<endl;
+                cout<<"Nim Mahasiswa      : "<<info(Mahasiswa(Q)).nim<<endl;
+                cout<<"Angkatan Mahasiswa : "<<info(Mahasiswa(Q)).angkatan<<endl;
+                cout<<"Jurusan Mahasiswa  : "<<info(Mahasiswa(Q)).jurusan<<endl;
+                cout<<"Asal Mahasiswa     : "<<info(Mahasiswa(Q)).asal<<endl<<endl;
+            }
+            Q = next(Q);
+        } while(Q != first(Lrelasi));
+        cout<<endl<<"-----------------------"<<endl;
+    }
 }
 
 void deletefirstRelasi(relasi_list &Lrelasi){
@@ -202,4 +204,9 @@ void deleteSemuaRelasiMahasiswa(relasi_list Lrelasi, address_mahasiswa M){
             R = NULL;
         }
     } while(R != first(Lrelasi) and R != NULL);
+};
+
+void updateRelasiBeasiswa(address_relasi &R, address_beasiswa B, address_mahasiswa M){
+    Beasiswa(R) = B;
+    Mahasiswa(R) = M;
 };

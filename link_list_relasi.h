@@ -33,4 +33,6 @@ void deleteafterRelasi(relasi_list &Lrelasi, address_relasi &R);
 void deleteRelasi(relasi_list &Lrelasi, address_relasi R);
 void deleteSemuaRelasiBeasiswa(relasi_list Lrelasi, address_beasiswa B);
 void deleteSemuaRelasiMahasiswa(relasi_list Lrelasi, address_mahasiswa M);
+
+void updateRelasiBeasiswa(address_relasi &R, address_beasiswa B, address_mahasiswa M);
 #endif // LINK_LIST_RELASI_H_INCLUDED
