@@ -21,13 +21,6 @@ int main()
     CreateListRelasi(Lrelasi);
     infotype_beasiswa infoB;
     infotype_mahasiswa infoM;
-    infoB.jenis = "a";
-    infoB.tahun = 2001;
-    insertBeasiswa(Lbeasiswa, alokasiBeasiswa(infoB));
-    infoM.nama = "ucok";
-    infoM.nim = "rofl";
-    insertMahasiswa(Lmahasiswa, alokasiMahasiswa(infoM));
-    insertRelasi(Lrelasi, alokasiRelasi(first(Lbeasiswa), first(Lmahasiswa)));
     menu_awal:
     int menu_1;
     int menu_2;
@@ -315,12 +308,12 @@ int main()
                 system("cls");
                 cout<<"Update Data Beasiswa"<<endl;
                 cout<<"--------------------"<<endl;
-                cout<<"Jenis Beasiswanya ? ";cin>>infoB.jenis;
+                cout<<"Jenis Beasiswa : ";cin>>infoB.jenis;
                 address_beasiswa B = findBeasiswa(Lbeasiswa, infoB);
                 if(B != NULL){
                     cout<<"       Update Data Beasiswa"<<endl;
                     cout<<"================================="<<endl;
-                    cout<<"Data Ditemukan"<<endl;
+                    cout<<"Data Ditemukan"<<endl<<endl;
                     cout<<"Jenis Beasiswa Menjadi : ";cin>>infoB.jenis;
                     cout<<"Tahun Beasiswa  Manjadi: ";cin>>infoB.tahun;cout<<endl;
                     address_beasiswa cek_ketersediaanData = findBeasiswa(Lbeasiswa, infoB);
@@ -344,12 +337,12 @@ int main()
                 system("cls");
                 cout<<"Update Data Mahasiswa"<<endl;
                 cout<<"--------------------"<<endl;
-                cout<<"Nama Mahasiswanya ? ";cin>>infoM.nama;
+                cout<<"Nama Mahasiswa : ";cin>>infoM.nama;
                 address_mahasiswa M = findMahasiswa(Lmahasiswa, infoM);
                 if(M != NULL){
                     cout<<"       Update Data Mahasiswa"<<endl;
                     cout<<"================================="<<endl;
-                    cout<<"Data Ditemukan"<<endl;
+                    cout<<"Data Ditemukan"<<endl<<endl;
                     cout<<"Nama Mahasiswanya Menjadi : ";cin>>infoM.nama;
                     cout<<"Nim Mahasiswanya Manjadi  : ";cin>>infoM.nim;cout<<endl;
                     address_mahasiswa cek_ketersediaanData = findMahasiswa(Lmahasiswa, infoM);
@@ -387,9 +380,9 @@ int main()
             cout<<" Beasiswa mana yang akan dipilih (jenis) : ";cin>>infoB.jenis;
             address_beasiswa cari_beasiswa = findBeasiswa(Lbeasiswa, infoB);
             if(cari_beasiswa){
+                system("cls");
                 printBeasiswaRelasiTertentu(Lrelasi, cari_beasiswa);
-                cout<<" Akan Menampilkan Mahasiswa";
-                getch();
+                cout<<" Daftar Nama Mahasiswa Yang Anda Sudah Diinput";
                 cout<<endl<<endl;
                 printMahasiswa(Lmahasiswa);
                 cout<<endl<<" Mahasiswa mana yang akan dipilih (Nama) : ";cin>>infoM.nama;
@@ -429,10 +422,10 @@ int main()
             cout<<" Beasiswa mana yang akan dipilih (jenis) : ";cin>>infoB.jenis;
             address_beasiswa cari_beasiswa = findBeasiswa(Lbeasiswa, infoB);
             if(cari_beasiswa){
+                system("cls");
                 printBeasiswaRelasiTertentu(Lrelasi, cari_beasiswa);
-                cout<<" Akan Menampilkan Mahasiswanya";
-                getch();
-                cout<<endl;
+                cout<<" Daftar Nama Mahasiswa Yang Anda Sudah Diinput";
+                cout<<endl<<endl;
                 printBeasiswaYangDimilikiMahasiswa(Lrelasi, cari_beasiswa);
                 cout<<endl<<" Mahasiswa mana yang akan dipilih (Nama) : ";cin>>infoM.nama;
                 address_mahasiswa cari_mahasiswa = findMahasiswa(Lmahasiswa, infoM);

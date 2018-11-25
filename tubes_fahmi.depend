@@ -4,18 +4,19 @@
 	<cstdlib>
 	<conio.h>
 
-1542977631 source:c:\users\muhammad fadli\documents\github\beasiswa_mahasiswa_tubes_cplusplus\main.cpp
+1543043150 source:c:\users\muhammad fadli\documents\github\beasiswa_mahasiswa_tubes_cplusplus\main.cpp
 	<iostream>
 	<conio.h>
 	<dos.h>
 	<cstdlib>
 	"link_list.cpp"
+	"link_list_relasi.cpp"
 
-1542925225 c:\users\muhammad fadli\documents\github\beasiswa_mahasiswa_tubes_cplusplus\link_lisk.h
+1543026251 c:\users\muhammad fadli\documents\github\beasiswa_mahasiswa_tubes_cplusplus\link_lisk.h
 	<stdio.h>
 	<iostream>
 
-1542973065 c:\users\muhammad fadli\documents\github\beasiswa_mahasiswa_tubes_cplusplus\link_list.cpp
+1543026251 c:\users\muhammad fadli\documents\github\beasiswa_mahasiswa_tubes_cplusplus\link_list.cpp
 	<cstdlib>
 	<iostream>
 	<conio.h>
@@ -47,4 +48,13 @@
 	"link_lisk.h"
 
 1543013331 c:\users\rahagi\documents\github\beasiswa_mahasiswa_tubes_cplusplus\link_list_relasi.h
+
+1543026251 c:\users\muhammad fadli\documents\github\beasiswa_mahasiswa_tubes_cplusplus\link_list_relasi.cpp
+	<cstdlib>
+	<iostream>
+	<conio.h>
+	"link_list_relasi.h"
+	"link_lisk.h"
+
+1543026251 c:\users\muhammad fadli\documents\github\beasiswa_mahasiswa_tubes_cplusplus\link_list_relasi.h
 
