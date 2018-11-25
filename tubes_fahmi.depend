@@ -22,7 +22,7 @@
 	<conio.h>
 	"link_lisk.h"
 
-1543013481 source:c:\users\rahagi\documents\github\beasiswa_mahasiswa_tubes_cplusplus\main.cpp
+1543139905 source:c:\users\rahagi\documents\github\beasiswa_mahasiswa_tubes_cplusplus\main.cpp
 	<iostream>
 	<conio.h>
 	<dos.h>
@@ -30,24 +30,24 @@
 	"link_list.cpp"
 	"link_list_relasi.cpp"
 
-1543010911 c:\users\rahagi\documents\github\beasiswa_mahasiswa_tubes_cplusplus\link_list.cpp
+1543139894 c:\users\rahagi\documents\github\beasiswa_mahasiswa_tubes_cplusplus\link_list.cpp
 	<cstdlib>
 	<iostream>
 	<conio.h>
 	"link_lisk.h"
 
-1543005699 c:\users\rahagi\documents\github\beasiswa_mahasiswa_tubes_cplusplus\link_lisk.h
+1543139898 c:\users\rahagi\documents\github\beasiswa_mahasiswa_tubes_cplusplus\link_lisk.h
 	<stdio.h>
 	<iostream>
 
-1543013742 c:\users\rahagi\documents\github\beasiswa_mahasiswa_tubes_cplusplus\link_list_relasi.cpp
+1543139886 c:\users\rahagi\documents\github\beasiswa_mahasiswa_tubes_cplusplus\link_list_relasi.cpp
 	<cstdlib>
 	<iostream>
 	<conio.h>
 	"link_list_relasi.h"
 	"link_lisk.h"
 
-1543013331 c:\users\rahagi\documents\github\beasiswa_mahasiswa_tubes_cplusplus\link_list_relasi.h
+1543139901 c:\users\rahagi\documents\github\beasiswa_mahasiswa_tubes_cplusplus\link_list_relasi.h
 
 1543026251 c:\users\muhammad fadli\documents\github\beasiswa_mahasiswa_tubes_cplusplus\link_list_relasi.cpp
 	<cstdlib>

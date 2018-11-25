@@ -22,6 +22,9 @@ struct infotype_mahasiswa
 {
     string nama;
     string nim;
+    string jurusan;
+    string angkatan;
+    string asal;
 };
 
 
