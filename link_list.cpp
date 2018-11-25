@@ -26,9 +26,6 @@ address_mahasiswa alokasiMahasiswa(infotype_mahasiswa X){
     address_mahasiswa P = new elmlist_mahasiswa;
     info(P).nama = X.nama;
     info(P).nim = X.nim;
-    info(P).jurusan = X.jurusan;
-    info(P).angkatan = X.angkatan;
-    info(P).asal = X.asal;
     next(P) = NULL;
     prev(P) = NULL;
     return P;
@@ -211,11 +208,8 @@ void printMahasiswa(list_mahasiswa Lmahasiswa){
         address_mahasiswa P = first(Lmahasiswa);
         while (P != NULL){
             cout<<endl;
-            cout<<"Nama Mahasiswa     = "<<info(P).nama<<endl;
-            cout<<"Nim Mahasiswa      = "<<info(P).nim<<endl;
-            cout<<"Angkatan Mahasiswa = "<<info(P).angkatan<<endl;
-            cout<<"Jurusan Mahasiswa  = "<<info(P).jurusan<<endl;
-            cout<<"Asal Mahasiswa     = "<<info(P).asal<<endl;
+            cout<<"Nama Mahasiswa = "<<info(P).nama<<endl;
+            cout<<"Nim Mahasiswa = "<<info(P).nim<<endl;
             P = next(P);
             cout<<endl;
         }
@@ -288,9 +282,6 @@ void deleteMahasiswa(list_mahasiswa &Lmahasiswa, address_mahasiswa P){
 void updateDataMahasiswa(address_mahasiswa &M, infotype_mahasiswa A){
     info(M).nama = A.nama;
     info(M).nim = A.nim;
-    info(M).jurusan = A.jurusan;
-    info(M).angkatan = A.angkatan;
-    info(M).asal = A.asal;
 };
 
 void updateDataBeasiswa(address_beasiswa &B, infotype_beasiswa A){
