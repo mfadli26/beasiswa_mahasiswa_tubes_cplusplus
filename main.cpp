@@ -21,15 +21,6 @@ int main()
     CreateListRelasi(Lrelasi);
     infotype_beasiswa infoB;
     infotype_mahasiswa infoM;
-    infoB.jenis = "penuh";
-    infoB.tahun = 2001;
-    insertBeasiswa(Lbeasiswa, alokasiBeasiswa(infoB));
-    infoM.nama = "ucok";
-    infoM.nim = "13109p";
-    infoM.angkatan = "2006";
-    infoM.jurusan = "Bisnis";
-    infoM.asal = "Jogja";
-    insertMahasiswa(Lmahasiswa, alokasiMahasiswa(infoM));
     menu_awal:
     int menu_1;
     int menu_2;
